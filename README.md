@@ -36,6 +36,24 @@ Authentication workflow
 
 End-to-end functional UI + backend
 
+
+## 🔧 Tech Stack
+
+Frontend: HTML, CSS, JavaScript (vanilla)
+
+Backend: Node.js, Express
+
+AI: OpenAI API (chat/completions used to generate MCQs)
+
+Database: MongoDB (Atlas) via Mongoose
+
+Auth & Security: bcrypt (password hashing), JWT (authentication)
+
+File parsing: pdf-parse (PDF → text)
+
+Dev tools: nodemon, dotenv, npm
+
+
 ## 🏗 Architecture Overview
 System Diagram
 Frontend (HTML, CSS, JS)
