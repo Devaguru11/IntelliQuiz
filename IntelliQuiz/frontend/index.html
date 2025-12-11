@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IntelliQuiz AI</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND SHAPES -->
+  <div class="bg-shape shape1"></div>
+  <div class="bg-shape shape2"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">⚡ <span>IntelliQuiz</span></div>
+    </div>
+
+    <div class="nav-right">
+      <a href="index.html" class="nav-link">Home</a>
+      <a id="loginLink" href="login.html" class="nav-link">Login</a>
+      <a id="signupLink" href="signup.html" class="nav-link">Signup</a>
+      <a id="leaderboardLink" href="scoreboard.html" class="nav-link">Leaderboard</a>
+
+      <!-- ⭐ FIX ADDED: THEME TOGGLE BUTTON ⭐ -->
+      <button id="themeToggle" class="icon-btn">🌙</button>
+
+      <button id="logoutBtn" class="logout-btn hidden">Logout</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="main">
+    <section class="hero">
+      <div class="badge">✨ AI-Powered Quiz Generation</div>
+      <h1 class="title">
+        Transform Your <span class="highlight">Documents</span><br/>Into Smart Quizzes
+      </h1>
+      <p class="subtitle">
+        Upload a document or type a topic — AI generates interactive quizzes instantly.
+      </p>
+    </section>
+
+    <!-- MODE SWITCH -->
+    <div class="mode-switch-wrapper">
+      <div class="mode-switch">
+        <button id="btnText" class="mode-btn active">✏️ Type Topic</button>
+        <button id="btnFile" class="mode-btn">📂 Upload File</button>
+      </div>
+    </div>
+
+    <!-- PANELS -->
+    <section class="panels">
+
+      <!-- TEXT MODE -->
+      <div id="textPanel" class="panel">
+        <textarea id="topic" placeholder="Enter topic or paste your notes..."></textarea>
+      </div>
+
+      <!-- FILE MODE -->
+      <div id="filePanel" class="panel hidden">
+        <div class="upload-container">
+          <label id="uploadBox" class="upload-box">
+            <input id="fileInput" type="file" accept=".pdf,.pptx,.ppt,.txt" hidden />
+            <div class="upload-center">
+              <div class="upload-circle">⬆️</div>
+              <p class="upload-title">Drag & drop your file</p>
+              <p class="upload-sub">or click to browse your files</p>
+              <div class="upload-tag">📄 Supports .pptx, .pdf, .txt</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- OPTIONS -->
+      <div class="options-row">
+        <label class="numq-label">
+          Number of questions
+          <select id="numQ">
+            <option value="5">5</option>
+            <option value="8" selected>8</option>
+            <option value="10">10</option>
+          </select>
+        </label>
+
+        <button id="generateBtn" class="generate-btn">✨ Generate Quiz</button>
+      </div>
+
+      <p id="status" class="status">Ready</p>
+
+      <!-- OUTPUT -->
+      <div id="quizArea" class="quiz-area"></div>
+
+    </section>
+  </main>
+
+  <!-- AUTH UI HANDLING -->
+  <script>
+    if (!localStorage.getItem("token")) {
+      document.getElementById("leaderboardLink").classList.add("hidden");
+    }
+
+    const loggedIn = localStorage.getItem("token") !== null;
+
+    if (loggedIn) {
+      document.getElementById("loginLink").classList.add("hidden");
+      document.getElementById("signupLink").classList.add("hidden");
+      document.getElementById("logoutBtn").classList.remove("hidden");
+    }
+
+    document.getElementById("logoutBtn").onclick = () => {
+      localStorage.clear();
+      window.location.href = "login.html";
+    };
+  </script>
+
+  <!-- MAIN LOGIC -->
+  <script src="script.js" defer></script>
+
+</body>
+</html>

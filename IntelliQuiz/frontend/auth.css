@@ -1,0 +1,121 @@
+/* ==========================
+   IntelliQuiz – Auth Styles
+   ========================== */
+
+   body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #0d1426;
+    color: white;
+    overflow-x: hidden;
+  }
+  
+  /* Background glow */
+  .bg-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99,136,255,0.25), transparent 70%);
+    top: -100px;
+    left: -100px;
+    z-index: -1;
+    filter: blur(100px);
+  }
+  
+  .bg-glow2 {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(64,240,190,0.25), transparent 70%);
+    bottom: -100px;
+    right: -100px;
+    z-index: -1;
+    filter: blur(120px);
+  }
+  
+  /* Navbar */
+  nav {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  nav .logo {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  
+  nav .toggle {
+    cursor: pointer;
+    font-size: 22px;
+  }
+  
+  /* Page hero section */
+  .auth-hero {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .auth-hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+  }
+  
+  .auth-hero p {
+    opacity: 0.7;
+  }
+  
+  /* Auth card */
+  .auth-card {
+    width: 420px;
+    padding: 30px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05);
+    border-radius: 18px;
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .auth-card h2 {
+    margin-bottom: 20px;
+  }
+  
+  .auth-card input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 15px;
+  }
+  
+  .auth-card button {
+    width: 100%;
+    padding: 15px;
+    background: #6ae8cc;
+    color: #0d1426;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s;
+    margin-top: 10px;
+  }
+  
+  .auth-card button:hover {
+    background: #84f2d9;
+  }
+  
+  /* link */
+  .auth-card a {
+    color: #6ae8cc;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
