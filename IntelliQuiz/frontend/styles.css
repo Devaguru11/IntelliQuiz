@@ -10,6 +10,18 @@
   --accent-dark: #2dd7b2;
   --danger: #ff8a8a;
 }
+/* ===== LIGHT MODE ===== */
+body.light {
+  --bg: #f5f7fb;
+  --panel: rgba(0, 0, 0, 0.04);
+  --muted: #5b6b8a;
+  --accent: #2563eb;
+  --accent-dark: #1e40af;
+  --card-border: rgba(0, 0, 0, 0.12);
+  --text: #0f172a;
+  --danger: #dc2626;
+}
+
 
 .hidden {
   display: none !important;
@@ -423,5 +435,87 @@ a.button-like {
 
 /* ensure focus ring is visible on keyboard navigation */
 :focus { outline-offset: 3px; }
+
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 30px;
+}
+
+/* ===== EXPLANATION ===== */
+.explain-btn {
+  margin-top: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+/* ===== HISTORY ===== */
+.history-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 12px;
+}
+
+.user-name {
+  font-weight: 700;
+  color: var(--accent);
+  margin-right: 12px;
+}
+
+/* ===== Explanation Toggle ===== */
+.explain-btn {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.explanation {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  display: none;
+}
+
+.explanation.visible {
+  display: block;
+}
+
+.explain-btn {
+  color: var(--accent);
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.explanation {
+  display: none;
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.explanation.visible {
+  display: block;
+}
+
+.options-list li.correct {
+  background: rgba(106, 232, 204, 0.9);
+  color: #022;
+  font-weight: 700;
+}
+
+.options-list li.incorrect {
+  background: rgba(255, 150, 150, 0.9);
+  color: #600;
+  font-weight: 700;
+}
+
 
 /* End of styles */
