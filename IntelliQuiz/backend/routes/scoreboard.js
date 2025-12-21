@@ -1,32 +1,40 @@
 import express from "express";
 import Score from "../models/Score.js";
-import { authMiddleware } from "../middleware/auth.js";
+import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
 
 // Save score
-router.post("/save", authMiddleware, async (req, res) => {
-  const { score, total } = req.body;
-
-  const percentage = (score / total) * 100;
+router.post("/save", auth, async (req, res) => {
+  const { score, total, topic, difficulty } = req.body;
+  const percentage = Math.round((score / total) * 100);
 
   await Score.create({
     userId: req.user.id,
     score,
     total,
-    percentage
+    percentage,
+    topic,
+    difficulty
   });
 
   res.json({ message: "Score saved" });
 });
 
-// Get scoreboard (top scores)
+// Leaderboard (best per user)
 router.get("/all", async (req, res) => {
-  const board = await Score.find()
-    .populate("userId", "name email")
-    .sort({ percentage: -1 });
+  const scores = await Score.aggregate([
+    { $sort: { percentage: -1 } },
+    {
+      $group: {
+        _id: "$userId",
+        best: { $first: "$$ROOT" }
+      }
+    },
+    { $replaceRoot: { newRoot: "$best" } }
+  ]);
 
-  res.json(board);
+  res.json(scores);
 });
 
 export default router;
