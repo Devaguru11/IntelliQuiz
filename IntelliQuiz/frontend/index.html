@@ -7,6 +7,13 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  
 </head>
 <body>
 
@@ -21,6 +28,8 @@
     </div>
 
     <div class="nav-right">
+      <span id="userName" class="user-name hidden"></span>
+
       <a href="index.html" class="nav-link">Home</a>
       <a id="loginLink" href="login.html" class="nav-link">Login</a>
       <a id="signupLink" href="signup.html" class="nav-link">Signup</a>
@@ -76,24 +85,47 @@
         </div>
       </div>
 
-      <!-- OPTIONS -->
-      <div class="options-row">
-        <label class="numq-label">
-          Number of questions
-          <select id="numQ">
-            <option value="5">5</option>
-            <option value="8" selected>8</option>
-            <option value="10">10</option>
-          </select>
-        </label>
+<!-- OPTIONS -->
+<div class="options-row">
 
-        <button id="generateBtn" class="generate-btn">✨ Generate Quiz</button>
-      </div>
+  <label class="numq-label">
+    Difficulty
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+  </label>
 
-      <p id="status" class="status">Ready</p>
+  <label class="numq-label">
+    Number of questions
+    <input
+      type="number"
+      id="numQ"
+      min="1"
+      max="10"
+      value="8"
+      placeholder="Max 10"
+    />
+  </label>
+  
 
-      <!-- OUTPUT -->
-      <div id="quizArea" class="quiz-area"></div>
+  <button id="generateBtn" class="generate-btn">✨ Generate Quiz</button>
+</div>
+
+<p id="status" class="status">Ready</p>
+
+
+
+<!-- OUTPUT -->
+<div id="quizArea" class="quiz-area"></div>
+
+<!-- SUMMARY -->
+<div id="summary" class="score-box hidden"></div>
+
+<!-- QUIZ HISTORY -->
+<div id="history" class="quiz-area"></div>
+
 
     </section>
   </main>
@@ -116,6 +148,14 @@
       localStorage.clear();
       window.location.href = "login.html";
     };
+    const user = JSON.parse(localStorage.getItem("user"));
+const userNameEl = document.getElementById("userName");
+
+if (user && user.name) {
+  userNameEl.textContent = `👋 Hi, ${user.name}`;
+  userNameEl.classList.remove("hidden");
+}
+
   </script>
 
   <!-- MAIN LOGIC -->
